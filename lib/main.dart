@@ -1,4 +1,4 @@
-import 'package:chat_app/commen/routes/pages.dart';
+import 'package:chat_app/common/routes/pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
