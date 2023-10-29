@@ -61,8 +61,9 @@ class SignInPage extends GetView<SignInController> {
     }
 
     Widget buildThirdPartyLogo() {
-      return SizedBox(
+      return Container(
         width: 295.w,
+        margin: EdgeInsets.only(bottom: 280.h),
         child: Column(
           children: [
             Text(

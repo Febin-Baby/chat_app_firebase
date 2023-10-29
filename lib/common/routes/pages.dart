@@ -1,5 +1,5 @@
+import 'package:chat_app/pages/application/index.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:chat_app/pages/signin_screen/index.dart';
 import 'package:chat_app/pages/welcome/index.dart';
@@ -22,17 +22,14 @@ class AppPages {
       page: () => const SignInPage(),
       binding: SignInBinding(),
     ),
-/*
+
     // check if needed to login or not
     GetPage(
       name: AppRoutes.Application,
-      page: () => ApplicationPage(),
+      page: () => const ApplicationPage(),
       binding: ApplicationBinding(),
-      middlewares: [
-        RouteAuthMiddleware(priority: 1),
-      ],
     ),
-
+/*
     // 最新路由
     // 首页
     GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),

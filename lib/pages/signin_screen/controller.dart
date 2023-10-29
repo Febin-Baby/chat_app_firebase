@@ -1,5 +1,5 @@
 import 'package:chat_app/common/entities/user.dart';
-import 'package:chat_app/common/routes/pages.dart';
+import 'package:chat_app/common/routes/routes.dart';
 import 'package:chat_app/common/store/store.dart';
 import 'package:chat_app/common/widgets/widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -61,13 +61,14 @@ class SignInController extends GetxController {
           await db
               .collection('users')
               .withConverter(
-                  fromFirestore: UserData.fromFirestore,
-                  toFirestore: (UserData userData, options) =>
-                      userData.toFirestore())
+                fromFirestore: UserData.fromFirestore,
+                toFirestore: (UserData userData, options) =>
+                    userData.toFirestore(),
+              )
               .add(data);
         }
         toastInfo(msg: 'Login sucess');
-        Get.offAndToNamed(AppPages.APPlication);
+        Get.offAndToNamed(AppRoutes.Application);
         state.loading.obs.value = false;
       }
       debugPrint('Combleted try');
