@@ -1,112 +1,113 @@
-import 'package:chat_app/pages/welcome/controller.dart';
-import 'package:dots_indicator/dots_indicator.dart';
+import 'package:chat_app/common/values/values.dart';
+import 'package:chat_app/common/widgets/widgets.dart';
+import 'package:chat_app/pages/signin_screen/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class SignInPage extends GetView<WelcomeController> {
+class SignInPage extends GetView<SignInController> {
   const SignInPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(
-        () => SizedBox(
-          width: 360.w,
-          height: 780.w,
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              PageView(
-                scrollDirection: Axis.horizontal,
-                reverse: false,
-                onPageChanged: (index) {
-                  controller.changePage(index);
-                },
-                controller: PageController(
-                  initialPage: 0,
-                  keepPage: false,
-                  viewportFraction: 1,
-                ),
-                pageSnapping: true,
-                physics: const ClampingScrollPhysics(),
+    Widget buildLogo() {
+      return Container(
+        width: 110.w,
+        margin: EdgeInsets.only(top: 84.h),
+        child: Column(
+          children: [
+            Container(
+              width: 89.w,
+              margin: EdgeInsets.symmetric(horizontal: 15.w),
+              child: Stack(
                 children: [
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/banner3.jpeg'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/banner3.jpeg'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/banner2.jpeg'),
-                      ),
-                    ),
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Positioned(
-                          bottom: 90,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              controller.handleSignIn();
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                              foregroundColor:
-                                  MaterialStateProperty.all(Colors.black),
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
-                              side: MaterialStateProperty.all(
-                                  const BorderSide(color: Colors.white)),
-                            ),
-                            child: const Text('Login'),
-                          ),
+                  Positioned(
+                    child: Container(
+                      height: 76.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryBackground,
+                        boxShadow: const [Shadows.primaryShadow],
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(35.w),
                         ),
-                      ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    height: 76.h,
+                    child: Image.asset(
+                      'assets/images/ic_launcher.png',
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
-              Positioned(
-                child: DotsIndicator(
-                  position: controller.state.index.obs.value,
-                  dotsCount: 3,
-                  reversed: false,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  decorator: DotsDecorator(
-                    size: const Size.square(9),
-                    activeShape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    activeSize: const Size(18, 9),
-                  ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 15.h, bottom: 15.h),
+              child: Text(
+                'Lets chat',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.thirdElement,
+                  fontSize: 18.sp,
+                  height: 1,
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget buildThirdPartyLogo() {
+      return SizedBox(
+        width: 295.w,
+        child: Column(
+          children: [
+            Text(
+              'Sign in with social network',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColors.primaryText,
+                fontWeight: FontWeight.w400,
+                fontSize: 16.sp,
+                height: 1,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 30.h,
+                left: 50.h,
+                right: 50.w,
+              ),
+              child: Obx(
+                () => btnFlatButtonWidget(
+                  onPressed: () {
+                    controller.hndleSignInn();
+                  },
+                  width: 200.w,
+                  height: 55.h,
+                  title: controller.state.loading.obs.value == true
+                      ? 'Please wait'
+                      : 'Google Login',
+                ),
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            buildLogo(),
+            const Spacer(),
+            buildThirdPartyLogo(),
+          ],
         ),
       ),
     );

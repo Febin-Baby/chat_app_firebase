@@ -22,20 +22,21 @@ class UserStore extends GetxController {
   void onInit() {
     super.onInit();
     token = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
-    var profileOffline = StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
+    String profileOffline =
+        StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
     if (profileOffline.isNotEmpty) {
       _isLogin.value = true;
       _profile(UserLoginResponseEntity.fromJson(jsonDecode(profileOffline)));
     }
   }
 
-  // 保存 token
+  // Set token
   Future<void> setToken(String value) async {
     await StorageService.to.setString(STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
-  // 获取 profile
+  // Get profile
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
     // var result = await UserAPI.profile();
@@ -44,14 +45,14 @@ class UserStore extends GetxController {
     return StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
   }
 
-  // 保存 profile
+  // Save profile
   Future<void> saveProfile(UserLoginResponseEntity profile) async {
     _isLogin.value = true;
     StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     setToken(profile.accessToken!);
   }
 
-  // 注销
+  // LogOut
   Future<void> onLogout() async {
     // if (_isLogin.value) await UserAPI.logout();
     await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);

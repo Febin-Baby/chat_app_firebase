@@ -37,7 +37,7 @@ class WelcomePage extends GetView<WelcomeController> {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/banner3.jpeg'),
+                        image: AssetImage('assets/images/banner1.png'),
                       ),
                     ),
                   ),
@@ -47,7 +47,7 @@ class WelcomePage extends GetView<WelcomeController> {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage('assets/banner3.jpeg'),
+                        image: AssetImage('assets/images/banner2.png'),
                       ),
                     ),
                   ),
@@ -57,7 +57,7 @@ class WelcomePage extends GetView<WelcomeController> {
                     decoration: const BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage('assets/banner2.jpeg'),
+                        image: AssetImage('assets/images/banner3.png'),
                       ),
                     ),
                     child: Stack(
