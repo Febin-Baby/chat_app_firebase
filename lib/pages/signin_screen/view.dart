@@ -89,9 +89,13 @@ class SignInPage extends GetView<SignInController> {
                   },
                   width: 200.w,
                   height: 55.h,
-                  title: controller.state.loading.obs.value == true
-                      ? 'Please wait'
-                      : 'Google Login',
+                  title: controller.state.loading.value == true
+                      ? const CircularProgressIndicator(
+                          color: AppColors.primaryText,
+                        )
+                      : const Text(
+                          'Google sign in',
+                        ),
                 ),
               ),
             )

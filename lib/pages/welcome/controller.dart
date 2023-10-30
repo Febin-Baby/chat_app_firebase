@@ -7,7 +7,7 @@ class WelcomeController extends GetxController {
   final state = WelcomeState();
   WelcomeController();
   changePage(int index) async {
-    state.index = index;
+    state.index.value = index;
   }
 
   handleSignIn() async {

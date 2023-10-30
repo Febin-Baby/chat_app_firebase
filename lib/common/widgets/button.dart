@@ -8,7 +8,7 @@ Widget btnFlatButtonWidget({
   double width = 140,
   double height = 44,
   Color gbColor = AppColors.primaryElement,
-  String title = "button",
+  Widget? title,
   Color fontColor = AppColors.primaryElementText,
   double fontSize = 16,
   String fontName = "Montserrat",
@@ -44,16 +44,7 @@ Widget btnFlatButtonWidget({
         )),
       ),
       onPressed: onPressed,
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          color: fontColor,
-          fontWeight: fontWeight,
-          fontSize: fontSize.sp,
-          height: 1,
-        ),
-      ),
+      child: title ?? const Text('Button'),
     ),
   );
 }

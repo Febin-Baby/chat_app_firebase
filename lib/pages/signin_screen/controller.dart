@@ -16,7 +16,7 @@ class SignInController extends GetxController {
   SignInController();
   final db = FirebaseFirestore.instance;
   Future<void> hndleSignInn() async {
-    state.loading.obs.value = true;
+    state.loading.value = true;
     try {
       debugPrint('Entere try');
       var user = await googleSignIn.signIn();
@@ -69,15 +69,13 @@ class SignInController extends GetxController {
         }
         toastInfo(msg: 'Login sucess');
         Get.offAndToNamed(AppRoutes.Application);
-        state.loading.obs.value = false;
+        state.loading.value = false;
       }
       debugPrint('Combleted try');
     } on FirebaseException catch (e) {
-      debugPrint('Entere Catch');
       debugPrint(e.message);
       toastInfo(msg: 'Error');
-      state.loading.obs.value = false;
-      debugPrint('Cobleted catch');
+      state.loading.value = false;
     }
     @override
     void onReady() {

@@ -28,15 +28,17 @@ class ApplicationPage extends GetView<ApplicationController> {
     }
 
     Widget buildBottomNavigationBr() {
-      return BottomNavigationBar(
-        items: controller.bottomtabs,
-        currentIndex: controller.state.page,
-        type: BottomNavigationBarType.fixed,
-        onTap: controller.handleNavBarTab,
-        showUnselectedLabels: true,
-        showSelectedLabels: true,
-        selectedItemColor: AppColors.tabBarElement,
-        unselectedItemColor: AppColors.thirdElementText,
+      return Obx(
+        () => BottomNavigationBar(
+          items: controller.bottomtabs,
+          currentIndex: controller.state.page,
+          type: BottomNavigationBarType.fixed,
+          onTap: controller.handleNavBarTab,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
+          selectedItemColor: AppColors.tabBarElement,
+          unselectedItemColor: AppColors.thirdElementText,
+        ),
       );
     }
 
