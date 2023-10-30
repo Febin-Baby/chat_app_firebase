@@ -105,7 +105,6 @@ class SignInPage extends GetView<SignInController> {
     }
 
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Column(
           children: [

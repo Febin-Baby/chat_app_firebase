@@ -1,5 +1,6 @@
 import 'package:chat_app/common/values/values.dart';
 import 'package:chat_app/pages/application/controller.dart';
+import 'package:chat_app/pages/contact/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,9 +18,7 @@ class ApplicationPage extends GetView<ApplicationController> {
           Center(
             child: Text('Chat'),
           ),
-          Center(
-            child: Text('Contact'),
-          ),
+          ContactPage(),
           Center(
             child: Text('Profile'),
           ),
@@ -43,9 +42,6 @@ class ApplicationPage extends GetView<ApplicationController> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Chat'),
-      ),
       body: buildPageView(),
       bottomNavigationBar: buildBottomNavigationBr(),
     );

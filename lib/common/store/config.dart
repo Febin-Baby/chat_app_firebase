@@ -12,10 +12,7 @@ class ConfigStore extends GetxController {
   bool get isRelease =>
       const bool.fromEnvironment("dart.vm.product"); //what's this
   Locale locale = const Locale('en', 'US');
-  List<Locale> languages = [
-    const Locale('en', 'US'),
-    const Locale('zh', 'CN'),
-  ];
+  List<Locale> languages = [const Locale('en', 'US'), const Locale('zh', 'CN')];
 
   @override
   void onInit() {
@@ -27,7 +24,6 @@ class ConfigStore extends GetxController {
     //_platform = await PackageInfo.fromPlatform();
   }
 
-  // 标记用户已打开APP
   Future<bool> saveAlreadyOpen() {
     return StorageService.to.setBool(STORAGE_DEVICE_FIRST_OPEN_KEY, true);
   }

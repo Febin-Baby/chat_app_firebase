@@ -1,4 +1,7 @@
+import 'package:chat_app/common/middlewares/middlewares.dart';
 import 'package:chat_app/pages/application/index.dart';
+import 'package:chat_app/pages/chat/index.dart';
+import 'package:chat_app/pages/contact/index.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:chat_app/pages/signin_screen/index.dart';
@@ -16,7 +19,11 @@ class AppPages {
       name: AppRoutes.INITIAL,
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
+      middlewares: [
+        RouteWelcomeMiddleware(priority: 1),
+      ],
     ),
+
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => const SignInPage(),
@@ -29,16 +36,25 @@ class AppPages {
       page: () => const ApplicationPage(),
       binding: ApplicationBinding(),
     ),
+
+    GetPage(
+      name: AppRoutes.Contact,
+      page: () => const ContactPage(),
+      binding: ContactBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.Chat,
+      page: () => const ChatPage(),
+      binding: ChatBinding(),
+    ),
+
 /*
-    // 最新路由
-    // 首页
-    GetPage(name: AppRoutes.Contact, page: () => ContactPage(), binding: ContactBinding()),
-    //消息
     GetPage(name: AppRoutes.Message, page: () => MessagePage(), binding: MessageBinding()),
-    //我的
+
     GetPage(name: AppRoutes.Me, page: () => MePage(), binding: MeBinding()),
-    //聊天详情
-    GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
+
+    
 
     GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),*/
   ];
